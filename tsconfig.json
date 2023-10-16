@@ -1,31 +1,31 @@
 {
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "ts-node": {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "noImplicitAny": true,
-        "module": "ESNext",
-        "target": "es5",
-        "jsx": "react-jsx",
-        "allowJs": true,
-        "strict": true,
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "paths": {
-            "*": ["./src/*"]
-        },
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "isolatedModules": true,
-        "noEmit": true
-    },
-    "ts-node": {
-        "compilerOptions": {
-            "module": "CommonJS"
-        }
-    },
-    "include": [
-        "./src/**/*.ts",
-        "./src/**/*.tsx",
-        "vite.config.ts",
-        ".eslintrc.js"
-    ]
+      "module": "CommonJS"
+    }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "vite.config.ts",
+    ".eslintrc.js"
+  ]
 }

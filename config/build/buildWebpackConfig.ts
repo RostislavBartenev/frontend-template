@@ -8,24 +8,24 @@ import { buildLoaders } from './buildLoaders';
 import { buildDevServer } from './buildDevServer';
 
 export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration => {
-    const { paths, mode, isDev } = options;
+  const { paths, mode, isDev } = options;
 
-    return {
-        mode,
-        entry: paths.entry,
-        output: {
-            filename: '[name].[contenthash].js',
-            path: paths.build,
-            clean: true,
-            publicPath: '/',
-        },
-        plugins: buildPlugins(options),
-        resolve: buildResolvers(options),
-        module: {
-            rules: buildLoaders(options),
-        },
-        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
-        devServer: isDev ? buildDevServer(options) : undefined,
-    };
+  return {
+    mode,
+    entry: paths.entry,
+    output: {
+      filename: '[name].[contenthash].js',
+      path: paths.build,
+      clean: true,
+      publicPath: '/',
+    },
+    plugins: buildPlugins(options),
+    resolve: buildResolvers(options),
+    module: {
+      rules: buildLoaders(options),
+    },
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
+    devServer: isDev ? buildDevServer(options) : undefined,
+  };
 };
 

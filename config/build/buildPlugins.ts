@@ -9,45 +9,45 @@ import { BuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] => {
-    const isProd = !isDev;
+  const isProd = !isDev;
 
-    const plugins = [
-        new webpack.ProgressPlugin(),
-        new HTMLWebpackPlugin({
-            template: paths.html,
-        }),
-        new CircularDependencyPlugin({
-            exclude: /node_modules/,
-            failOnError: true,
-        }),
-        new ForkTsCheckerWebpackPlugin({
-            typescript: {
-                diagnosticOptions: {
-                    semantic: true,
-                    syntactic: true,
-                },
-                mode: 'write-references',
-            },
-        }),
-        new webpack.DefinePlugin({
-            'process.env': JSON.stringify(process.env),
-        }),
-    ];
+  const plugins = [
+    new webpack.ProgressPlugin(),
+    new HTMLWebpackPlugin({
+      template: paths.html,
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: true,
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: 'write-references',
+      },
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
+  ];
 
-    if (isDev) {
-        plugins.push(new ReactRefreshWebpackPlugin());
-        plugins.push(new webpack.HotModuleReplacementPlugin());
-        plugins.push(new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }));
-    }
+  if (isDev) {
+    plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }));
+  }
 
-    if (isProd) {
-        plugins.push(new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }));
-    }
+  if (isProd) {
+    plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].css',
+    }));
+  }
 
-    return plugins;
+  return plugins;
 };
