@@ -1,7 +1,11 @@
 import './styles/index.scss';
 
+import { withProviders } from 'app/providers';
+
+import { Routing } from 'pages';
+
 const App = () => {
-  return <div>123</div>;
+  return <Routing />;
 };
 
-export default App;
+export default withProviders(App);

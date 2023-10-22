@@ -31,6 +31,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'no-param-reassign': 'off',
+    'react/display-name': 'off',
   },
   overrides: [
     {
